@@ -6,11 +6,21 @@ import Register from './Pages/Register'
 import Pnf from './Pages/Pnf'
 import { ToastContainer } from 'react-toastify'
 import './App.css'
+import Protected from './PrivateRoute/Protected'
 function App() {
   return (
     <BrowserRouter>
     <ToastContainer autoclose={4000} position={'bottom-right'}/>
         <Routes>
+           <Route path={`/`} element={
+             <Protected>
+             <Home/>
+           </Protected>}
+           /> 
+
+           {/* <Route element={<Protected/>}>
+              <Route path={`/`} element={<Home/>}/>
+           </Route> */}
             <Route path={`/`} element={<Home/>}/>
             <Route path={`/login`} element={<Login/>}/>
             <Route path={`/register`} element={<Register/>}/>
